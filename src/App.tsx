@@ -97,7 +97,7 @@ function App() {
   return (
     <ChakraProvider>
       {isConfettiVisible && (
-      <Modal isOpen={isConfettiVisible} onClose={handleCloseModal}>
+      <Modal isOpen={isConfettiVisible} onClose={handleCloseModal} isCentered>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Has completado el nivel 🏆</ModalHeader>
@@ -123,7 +123,6 @@ function App() {
         </ModalContent>
       </Modal>
     )}
-    <div className="App">
     
     <Grid
       h="100vh"
@@ -135,7 +134,7 @@ function App() {
       bg="gray.700"
     >
       <Center h="100vh">
-      <VStack spacing={4} alignItems="center">
+      <VStack m={2} spacing={4} alignItems="center">
         <Heading as="h1" color="teal.400" fontWeight="bold" fontSize="4xl">
           <StarIcon boxSize={8} /> Aprende Palabras en Inglés
         </Heading>
@@ -145,13 +144,18 @@ function App() {
       <Box>
       <Card p={4} bg="gray.600" marginBottom={4}>
           <Text align='center' fontSize="3xl" color="white" fontWeight="bold">
-            {currentWord?.english}
+            <span style={{ marginLeft: '50px'}}>{currentWord?.english} <span style={{
+                                      fontSize: "1rem",
+                                      verticalAlign: "middle",
+                                      display: "inline-block"
+                                    }}>🔊</span>
+            </span>
           </Text>
 
           <Flex flexDirection="column">
               <Box>
                 <Tag size="md" colorScheme="teal" mb={2}>
-                  {currentWord?.type}
+                  {currentWord?.type} 
                 </Tag>
               </Box>
               <Box>
@@ -185,7 +189,7 @@ function App() {
       </Box>
       </VStack>
       </Center>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} isCentered>
         <ModalOverlay />
         <ModalContent textAlign="center">
           <ModalHeader color="teal.600">¡Correcto!😄</ModalHeader>
@@ -194,7 +198,7 @@ function App() {
           </Button>
         </ModalContent>
       </Modal>
-      <Modal isOpen={isErrorModalOpen} onClose={handleRetry}>
+      <Modal isOpen={isErrorModalOpen} onClose={handleRetry} isCentered>
         <ModalOverlay />
         <ModalContent textAlign="center">
           <ModalHeader color="red.500">¡Incorrecto!😓</ModalHeader>
@@ -203,8 +207,6 @@ function App() {
         </ModalContent>
       </Modal>
     </Grid>
-    
-    </div>
     </ChakraProvider>
   )
 }
