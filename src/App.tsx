@@ -27,15 +27,15 @@ import ConfettiExplosion from "react-confetti-explosion";
 
 const words = [
   { english: "Apple", spanish: "Manzana", type: "sustantivo", synonyms: [] },
-  { english: "Run", spanish: "Correr", type: "verbo regular", synonyms: ["trotar"] },
-  { english: "Big", spanish: "Grande", type: "adjetivo", synonyms: ["enorme"] },
-  { english: "House", spanish: "Casa", type: "Sustantivo", synonyms: ["Hogar", "vivienda"] },
-  { english: "Quickly", spanish: "Rápidamente", type: "Adverbio", synonyms: ["Velozmente"] },
-  { english: "Jump", spanish: "Saltar", type: "Verbo Irregular", synonyms: ["Brincar"] },
-  { english: "Happy	", spanish: "Feliz", type: "Adjetivo", synonyms: ["Contento"] },
-  { english: "Dog", spanish: "Perro", type: "Verbo Regular", synonyms: ["Can"] },
-  { english: "Play", spanish: "Jugar", type: "adjetivo", synonyms: ["Divertirse"] },
-  { english: "Beautiful", spanish: "Hermoso", type: "Adjetivo", synonyms: ["Precioso"] }
+  { english: "Run", spanish: "Correr", type: "verbo regular", synonyms: ["Jog", "Trot", "Sprint", "Race", "Rush", "Haste"] },
+  { english: "Big", spanish: "Grande", type: "adjetivo", synonyms: ["Large", "Huge", "Massive", "Immense", "Gigantic", "Colossal", "Vast", "Grand"] },
+  { english: "House", spanish: "Casa", type: "Sustantivo", synonyms: ["Home", "Residence", "Domicile", "Homestead", "Dwelling place", "Manor"] },
+  { english: "Quickly", spanish: "Rápidamente", type: "Adverbio", synonyms: ["Fast", "Swift", "Speedily", "Rapidly", "Hastily", "Fleetly"] },
+  { english: "Jump", spanish: "Saltar", type: "Verbo Irregular", synonyms: ["Bound", "Bounce", "Skip", "Lunge", "Hurdle"] },
+  { english: "Happy	", spanish: "Feliz", type: "Adjetivo", synonyms: ["Joyful", "Content", "Cheerful", "Merry", "Overjoyed"] },
+  { english: "Dog", spanish: "Perro", type: "Verbo Regular", synonyms: ["Canine", "Pooch", "Hound", "Pup", "Canid", "Fido", "Cur", "Man's best friend"] },
+  { english: "Play", spanish: "Jugar", type: "adjetivo", synonyms: ["Romp", "Gambol", "Game", "Frolic", "Amuse", "Entertain", "Engage in recreation"] },
+  { english: "Beautiful", spanish: "Hermoso", type: "Adjetivo", synonyms: ["Gorgeous", "Lovely", "Stunning", "Attractive", "Splendid", "Ravishing"] }
   // Agrega más palabras aquí
 ];
 
@@ -54,6 +54,7 @@ function App() {
 
   const removeAccents = (str: string) => {
     return str
+      .trim()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase();
@@ -144,7 +145,7 @@ function App() {
       <Box>
       <Card p={4} bg="gray.600" marginBottom={4}>
           <Text align='center' fontSize="3xl" color="white" fontWeight="bold">
-            <span style={{ marginLeft: '50px'}}>{currentWord?.english} <span style={{
+            <span style={{ marginLeft: '40px'}}>{currentWord?.english} <span style={{
                                       fontSize: "1rem",
                                       verticalAlign: "middle",
                                       display: "inline-block"
@@ -160,7 +161,7 @@ function App() {
               </Box>
               <Box>
                 {currentWord?.synonyms.length > 0 && (
-                  <HStack spacing={1}>
+                  <HStack spacing={1} style={{ flexWrap: 'wrap' }}>
                     <Text color="white" fontWeight="bold">Sinónimos:</Text>
                     {currentWord.synonyms.map((synonym, index) => (
                       <Badge key={index} colorScheme="teal">
