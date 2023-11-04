@@ -28,14 +28,14 @@ import ConfettiExplosion from "react-confetti-explosion";
 const words = [
   { english: "Apple", spanish: "Manzana", type: "sustantivo", synonyms: [] },
   { english: "Run", spanish: "Correr", type: "verbo regular", synonyms: ["trotar"] },
-  // { english: "Big", spanish: "Grande", type: "adjetivo", synonyms: ["enorme"] },
-  // { english: "House", spanish: "Casa", type: "Sustantivo", synonyms: ["Hogar", "vivienda"] },
-  // { english: "Quickly", spanish: "Rápidamente", type: "Adverbio", synonyms: ["Velozmente"] },
-  // { english: "Jump", spanish: "Saltar", type: "Verbo Irregular", synonyms: ["Brincar"] },
-  // { english: "Happy	", spanish: "Feliz", type: "Adjetivo", synonyms: ["Contento"] },
-  // { english: "Dog", spanish: "Perro", type: "Verbo Regular", synonyms: ["Can"] },
-  // { english: "Play", spanish: "Jugar", type: "adjetivo", synonyms: ["Divertirse"] },
-  // { english: "Beautiful", spanish: "Hermoso", type: "Adjetivo", synonyms: ["Precioso"] }
+  { english: "Big", spanish: "Grande", type: "adjetivo", synonyms: ["enorme"] },
+  { english: "House", spanish: "Casa", type: "Sustantivo", synonyms: ["Hogar", "vivienda"] },
+  { english: "Quickly", spanish: "Rápidamente", type: "Adverbio", synonyms: ["Velozmente"] },
+  { english: "Jump", spanish: "Saltar", type: "Verbo Irregular", synonyms: ["Brincar"] },
+  { english: "Happy	", spanish: "Feliz", type: "Adjetivo", synonyms: ["Contento"] },
+  { english: "Dog", spanish: "Perro", type: "Verbo Regular", synonyms: ["Can"] },
+  { english: "Play", spanish: "Jugar", type: "adjetivo", synonyms: ["Divertirse"] },
+  { english: "Beautiful", spanish: "Hermoso", type: "Adjetivo", synonyms: ["Precioso"] }
   // Agrega más palabras aquí
 ];
 
@@ -48,11 +48,11 @@ function App() {
 
   const currentWord = words[currentWordIndex];
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
   };
 
-  const removeAccents = (str) => {
+  const removeAccents = (str: string) => {
     return str
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
@@ -88,12 +88,12 @@ function App() {
     setIsModalOpen(false);
   };
 
-  const handleKeyUp = (event) => {
+  const handleKeyUp = (event: any) => {
     if (event.key === "Enter") {
       handleCheckAnswer();
     }
   };
-console.log(currentWordIndex)
+
   return (
     <ChakraProvider>
       {isConfettiVisible && (
